@@ -912,3 +912,38 @@ footer {
   display: none;
 }
 
+/* Facebook Page Section */
+.fb-page {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.fb-page iframe,
+.facebook-embed iframe {
+  border: none;
+  overflow: hidden;
+  width: 100% !important;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .fb-page,
+  .facebook-embed {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .fb-page[data-width],
+  .facebook-embed iframe {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .facebook-embed iframe {
+    height: 500px !important;
+  }
+}
+
