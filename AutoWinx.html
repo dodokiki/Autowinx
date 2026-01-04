@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Auto Winx - บริการติดฟิล์มรถยนต์ เคลือบแก้ว | ลาดสวาย ปทุมธานี</title>
+  <meta name="description" content="ร้าน Auto Winx ลาดสวาย ปทุมธานี บริการติดตั้งฟิล์มกรองแสง ฟิล์มเซรามิก ฟิล์มกันรอย (PPF) และเคลือบแก้วรถยนต์ระดับพรีเมียม งานละเอียด ประสบการณ์สูง รับประกันคุณภาพ">
+  <meta name="keywords" content="ติดฟิล์มรถยนต์ ลาดสวาย, ร้านติดฟิล์ม ปทุมธานี, เคลือบแก้ว ลาดสวาย, ฟิล์มเซรามิก, ติดฟิล์มกันรอย, Auto Winx, ร้านแต่งรถ ลำลูกกา">
+  <meta property="og:title" content="Auto Winx - บริการติดฟิล์มรถยนต์ เคลือบแก้ว | ลาดสวาย ปทุมธานี">
+  <meta property="og:description" content="บริการติดตั้งฟิล์มกรองแสง ฟิล์มเซรามิก และเคลือบแก้วรถยนต์ระดับพรีเมียม งานละเอียด ประสบการณ์สูง">
+  <meta property="og:image" content="https://www.your-domain.com/images/og-image.jpg">
+  <meta property="og:url" content="https://www.your-domain.com/">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <style>
+    body {
+      font-family: 'Kanit', sans-serif;
+      background-color: #000000;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Loading Animation */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #000000, #1a1a1a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading-logo {
+      font-size: 3rem;
+      color: #FFD700;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    /* Parallax Effect */
+    .parallax-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parallax-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120%;
+      background-size: cover;
+      background-position: center;
+      transform: translateY(0);
+      transition: transform 0.1s ease;
+    }
+
+    nav {
+      background-color: #000000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid #FFD700;
+    }
+
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #FFD700;
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #FFD700;
+    }
+
+    header {
+      text-align: center;
+      padding: 0;
+      background: #000000;
+    }
+
+    .banner {
+      position: relative;
+      height: 80vh;
+      min-height: 500px;
+      overflow: hidden;
+    }
+
+    .banner-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4);
+    }
+
+    .banner-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    header h1 {
+      color: #FFD700;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    header p {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 2rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    }
+
+    .cta-button {
+      background-color: #FFD700;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      font-weight: 600;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #FFC300;
+    }
+
+    #services {
+      padding: 4rem 2rem;
+      background-color: #111111;
+      text-align: center;
+    }
+
+    #services h2 {
+      color: #FFEB3B;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .service-grid {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .service-item {
+      background-color: #1a1a1a;
+      padding: 2rem;
+      border: 1px solid #FFD700;
+      border-radius: 10px;
+    }
+
+    .service-item h3 {
+      color: #FFD700;
+    }
+
+    .service-item p {
+      color: #dddddd;
+    }
+
+    #gallery {
+      background-color: #000000;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    #gallery h2 {
+      color: #FFEB3B;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border: 2px solid #FFD700;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+    }
+
+    #contact {
+      padding: 4rem 2rem;
+      background-color: #111111;
+    }
+
+    #contact h2 {
+      color: #FFEB3B;
+      margin-bottom: 1rem;
+    }
+
+    #contact ul {
+      list-style: none;
+      padding: 0;
+      color: #ffffff;
+      line-height: 1.8;
+    }
+
+    #contact a {
+      color: #FFD700;
+      text-decoration: none;
+    }
+
+    #map {
+      padding: 4rem 2rem;
+      background-color: #000000;
+      text-align: center;
+    }
+
+    #map h2 {
+      color: #FFEB3B;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .map-container {
+      margin-bottom: 2rem;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      max-width: 1000px;
+      height: 450px;
+      border: 3px solid #FFD700;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+    }
+
+    .location-info {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .location-card {
+      background: linear-gradient(145deg, #1a1a1a, #222222);
+      padding: 2rem;
+      border: 2px solid #FFD700;
+      border-radius: 15px;
+      max-width: 500px;
+      text-align: left;
+      box-shadow: 0 8px 25px rgba(255, 215, 0, 0.1);
+    }
+
+    .location-card h3 {
+      color: #FFD700;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .location-card p {
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .location-card strong {
+      color: #FFD700;
+    }
+
+    footer {
+      background-color: #000;
+      text-align: center;
+      padding: 1rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    /* Floating LINE Button */
+    .floating-line-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(45deg, #00C300, #00E676);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(0, 195, 0, 0.4);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-family: 'Kanit', sans-serif;
+    }
+
+    .floating-line-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0, 195, 0, 0.6);
+      background: linear-gradient(45deg, #00E676, #00C300);
+    }
+
+    .floating-line-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .line-icon {
+      width: 24px;
+      height: 24px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+      color: #00C300;
+    }
+
+    /* Statistics Section */
+    .stats-section {
+      background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      background: rgba(255, 215, 0, 0.1);
+      border: 2px solid #FFD700;
+      border-radius: 15px;
+      padding: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(255, 215, 0, 0.3);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #FFD700;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      background-color: #000000;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .testimonial-card {
+      background: linear-gradient(145deg, #1a1a1a, #222222);
+      border: 2px solid #FFD700;
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 1rem;
+      max-width: 400px;
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: scale(1.05);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      color: #FFD700;
+      font-weight: 600;
+    }
+
+    /* Price Cards */
+    .pricing-section {
+      background-color: #111111;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .price-card {
+      background: linear-gradient(145deg, #1a1a1a, #222222);
+      border: 2px solid #FFD700;
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 1rem;
+      max-width: 300px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .price-card:hover::before {
+      left: 100%;
+    }
+
+    .price-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+    }
+
+    .price-title {
+      color: #FFD700;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .price-amount {
+      font-size: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .price-features {
+      list-style: none;
+      padding: 0;
+      color: #dddddd;
+    }
+
+    .price-features li {
+      margin-bottom: 0.5rem;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .price-features li::before {
+      content: '✓';
+      color: #FFD700;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+      .floating-line-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+      
+      .line-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      .price-card {
+        margin: 1rem 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-logo">
+      <i class="fas fa-car"></i> Auto Winx
+    </div>
+  </div>
+
+  <nav>
+    <a href="#home" class="logo">Auto Winx</a>
+    <ul>
+      <li><a href="#services">บริการของเรา</a></li>
+      <li><a href="#gallery">ผลงาน</a></li>
+      <li><a href="#map">ที่ตั้งร้าน</a></li>
+      <li><a href="#contact">ติดต่อเรา</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <div class="banner">
+      <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Banner Auto Winx - ร้านติดฟิล์มรถยนต์" class="banner-image">
+      <div class="banner-overlay">
+        <h1>ร้าน Auto Winx ลาดสวาย: ที่สุดของบริการติดฟิล์มและเคลือบแก้ว</h1>
+        <p>เปลี่ยนรถคุณให้พรีเมียมกว่าใคร ด้วยทีมงานมืออาชีพและผลิตภัณฑ์คุณภาพสูง</p>
+        <a href="#contact" class="cta-button">สอบถามราคาและโปรโมชั่น</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="services">
+      <h2>บริการของเรา</h2>
+      <div class="service-grid">
+        <div class="service-item animate__animated animate__fadeInUp">
+          <div style="text-align: center; margin-bottom: 1rem;">
+            <i class="fas fa-sun" style="font-size: 3rem; color: #FFD700;"></i>
+          </div>
+          <h3>ติดตั้งฟิล์มกรองแสง</h3>
+          <p>ฟิล์มเซรามิกคุณภาพสูง ลดความร้อน กันรังสี UV เนื้อฟิล์มใสเคลียร์ ขับขี่สบายตา</p>
+        </div>
+        <div class="service-item animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <div style="text-align: center; margin-bottom: 1rem;">
+            <i class="fas fa-shield-alt" style="font-size: 3rem; color: #FFD700;"></i>
+          </div>
+          <h3>ติดตั้งฟิล์มใสกันรอย (PPF)</h3>
+          <p>ปกป้องสีรถจากรอยขีดข่วน สะเก็ดหิน และคราบสกปรก ฟิล์มหนา ทนทาน ไม่ทิ้งคราบกาว</p>
+        </div>
+        <div class="service-item animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+          <div style="text-align: center; margin-bottom: 1rem;">
+            <i class="fas fa-gem" style="font-size: 3rem; color: #FFD700;"></i>
+          </div>
+          <h3>เคลือบแก้ว/เซรามิก</h3>
+          <p>สร้างชั้นฟิล์มแข็งแกร่ง ปกป้องสีรถให้เงางามฉ่ำวาว ไล่น้ำได้ดีเยี่ยม ทำความสะอาดง่าย</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+      <h2 style="color: #FFEB3B; margin-bottom: 3rem;">สถิติที่น่าประทับใจ</h2>
+      <div class="stats-grid">
+        <div class="stat-item animate__animated animate__fadeInUp">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">รถที่ติดตั้งแล้ว</div>
+        </div>
+        <div class="stat-item animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <div class="stat-number" data-target="98">0</div>
+          <div class="stat-label">% ความพึงพอใจ</div>
+        </div>
+        <div class="stat-item animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">ปีประสบการณ์</div>
+        </div>
+        <div class="stat-item animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+          <div class="stat-number" data-target="24">0</div>
+          <div class="stat-label">ชั่วโมงบริการ</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>ผลงานที่ผ่านมา</h2>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ผลงานติดฟิล์มเซรามิก Honda Civic">
+        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ผลงานเคลือบแก้ว Toyota Fortuner">
+        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ผลงานติดตั้งฟิล์มกันรอย PPF Benz C-Class">
+        <img src="https://images.unsplash.com/photo-1536700503339-1e4b06520771?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ติดฟิล์มกรองแสงรถยนต์ Tesla Model 3">
+        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ผลงานเคลือบแก้วรถยนต์หรู">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="ผลงานติดฟิล์มรถยนต์สปอร์ต">
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <h2 style="color: #FFEB3B; margin-bottom: 3rem;">เสียงจากลูกค้า</h2>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+        <div class="testimonial-card animate__animated animate__fadeInLeft">
+          <div class="testimonial-text">
+            "งานคุณภาพสูงมาก ติดตั้งฟิล์มเซรามิกให้รถผม รู้สึกเย็นขึ้นมาก แนะนำเลยครับ"
+          </div>
+          <div class="testimonial-author">- คุณสมชาย (Honda Civic)</div>
+        </div>
+        <div class="testimonial-card animate__animated animate__fadeInUp">
+          <div class="testimonial-text">
+            "ทีมงานมืออาชีพ งานละเอียด ราคาเป็นมิตร ติดตั้ง PPF ให้รถใหม่ ปลอดภัยหายห่วง"
+          </div>
+          <div class="testimonial-author">- คุณสมหญิง (Toyota Fortuner)</div>
+        </div>
+        <div class="testimonial-card animate__animated animate__fadeInRight">
+          <div class="testimonial-text">
+            "เคลือบแก้วให้รถหรู เงางามเหมือนใหม่ ดูแลง่ายมาก ขอบคุณ Auto Winx ครับ"
+          </div>
+          <div class="testimonial-author">- คุณสมศักดิ์ (Mercedes-Benz)</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="map">
+      <h2>ที่ตั้งร้าน</h2>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.131!2d100.6464!3d13.7563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ1JzIyLjciTiAxMDDCsDM4JzQ3LjAiRQ!5e0!3m2!1sth!2sth!4v1234567890"
+          width="100%" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="location-info">
+        <div class="location-card">
+          <h3>📍 ที่ตั้งร้าน Auto Winx</h3>
+          <p><strong>ที่อยู่:</strong> ซอยพหลโยธิน 50 แยก 11, ถนนเทพรักษ์ (ใกล้ลาดสวาย, ปทุมธานี)</p>
+          <p><strong>GPS:</strong> 13.7563, 100.6464</p>
+          <p><strong>การเดินทาง:</strong> ใช้ทางด่วนรามอินทรา-อาจณรงค์ ออกทางลาดสวาย</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+      <h2 style="color: #FFEB3B; margin-bottom: 3rem;">แพ็คเกจบริการ</h2>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
+        <div class="price-card animate__animated animate__fadeInUp">
+          <div class="price-title">แพ็คเกจเริ่มต้น</div>
+          <div class="price-amount">฿2,500</div>
+          <ul class="price-features">
+            <li>ฟิล์มกรองแสงคุณภาพดี</li>
+            <li>ติดตั้งกระจกหน้า-หลัง</li>
+            <li>รับประกัน 1 ปี</li>
+            <li>บริการหลังการขาย</li>
+          </ul>
+        </div>
+        <div class="price-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <div class="price-title">แพ็คเกจพรีเมียม</div>
+          <div class="price-amount">฿5,500</div>
+          <ul class="price-features">
+            <li>ฟิล์มเซรามิกคุณภาพสูง</li>
+            <li>ติดตั้งครบทุกบาน</li>
+            <li>เคลือบแก้วเพิ่ม</li>
+            <li>รับประกัน 3 ปี</li>
+            <li>บริการดูแลฟรี 1 ปี</li>
+          </ul>
+        </div>
+        <div class="price-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+          <div class="price-title">แพ็คเกจ VIP</div>
+          <div class="price-amount">฿12,500</div>
+          <ul class="price-features">
+            <li>ฟิล์มเซรามิกเกรดสูงสุด</li>
+            <li>ติดตั้ง PPF กันรอย</li>
+            <li>เคลือบแก้วเซรามิก</li>
+            <li>รับประกัน 5 ปี</li>
+            <li>บริการดูแลฟรี 2 ปี</li>
+            <li>นัดหมายล่วงหน้า</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>ติดต่อเรา</h2>
+      <p>สอบถามข้อมูล นัดคิว หรือขอใบเสนอราคาได้ทันที</p>
+      <ul>
+        <li><strong>โทร:</strong> <a href="tel:09544501635">095-4450-1635</a></li>
+        <li><strong>LINE ID:</strong> <a href="https://line.me/ti/p/~yourlineid" target="_blank">@autowinx</a></li>
+        <li><strong>เวลาทำการ:</strong> จันทร์ - เสาร์ 9:00 - 18:00 น.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Auto Winx ลาดสวาย. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Floating LINE Button -->
+  <a href="https://line.me/ti/p/~autowinx" target="_blank" class="floating-line-btn">
+    <div class="line-icon">L</div>
+    เพิ่มเพื่อน LINE
+  </a>
+
+  <script>
+    // Loading Screen
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('loadingScreen').style.opacity = '0';
+        setTimeout(function() {
+          document.getElementById('loadingScreen').style.display = 'none';
+        }, 500);
+      }, 1500);
+    });
+
+    // Animated Counter
+    function animateCounter(element) {
+      const target = parseInt(element.getAttribute('data-target'));
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        element.textContent = Math.floor(current);
+      }, 16);
+    }
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate__animated');
+          
+          // Animate counters when stats section is visible
+          if (entry.target.classList.contains('stats-section')) {
+            const counters = entry.target.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+              animateCounter(counter);
+            });
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections for animations
+    document.querySelectorAll('.stats-section, .testimonials-section, .pricing-section').forEach(section => {
+      observer.observe(section);
+    });
+
+    // Parallax Effect
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.parallax-bg');
+      
+      parallaxElements.forEach(element => {
+        const speed = 0.5;
+        element.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add hover effects to service items
+    document.querySelectorAll('.service-item').forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) scale(1.02)';
+      });
+      
+      item.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Add click effects to price cards
+    document.querySelectorAll('.price-card').forEach(card => {
+      card.addEventListener('click', function() {
+        this.style.transform = 'translateY(-5px) scale(1.02)';
+        setTimeout(() => {
+          this.style.transform = 'translateY(-10px) scale(1.05)';
+        }, 100);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
