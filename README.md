@@ -127,3 +127,4 @@ Edit CSS variables in `css/style.css`:
 © 2025 Auto Winx. All Rights Reserved.
 
 
+
