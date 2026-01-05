@@ -310,3 +310,4 @@ if (document.querySelector('.gallery-grid')) {
   initGallery();
 }
 
+
